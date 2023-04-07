@@ -50,11 +50,11 @@ public class PantryFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         addFAB = view.findViewById(R.id.add_FAB);
         NavController navController = NavHostFragment.findNavController(this);
-        
+
         addFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navController.navigate(R.id.action_pantryFragment_to_pantryEditingFragment);
+                navController.navigate(R.id.action_pantryFragment_to_addIngredientFragment);
             }
         });
 
@@ -81,16 +81,18 @@ public class PantryFragment extends Fragment {
             super(itemView);
             ingredientName_textView = itemView.findViewById(R.id.ingredientName_textView);
             ingredientQuantity_textView = itemView.findViewById(R.id.ingredientQuantity_textView);
+
         }
 
         public void bindData(Ingredient ingredient) {
             ingredientName_textView.setText(ingredient.getName());
             ingredientQuantity_textView.setText(Double.toString(ingredient.getQuantity()));
         }
+
     }
 
     //Set up Recycler adapter
-    private class IngredientAdapter extends RecyclerView.Adapter<IngredientViewHolder> {
+    private static class IngredientAdapter extends RecyclerView.Adapter<IngredientViewHolder> {
         private ArrayList<Ingredient> ingredientArrayList;
 
         public IngredientAdapter(ArrayList<Ingredient> ingredientList) {
@@ -114,5 +116,6 @@ public class PantryFragment extends Fragment {
         public int getItemCount() {
             return ingredientArrayList.size();
         }
+
     }
 }

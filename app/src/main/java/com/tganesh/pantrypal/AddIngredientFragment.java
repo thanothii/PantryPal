@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class PantryEditingFragment extends Fragment {
+public class AddIngredientFragment extends Fragment {
 
-    public PantryEditingFragment() {
+    public AddIngredientFragment() {
         // Required empty public constructor
     }
 
@@ -24,6 +24,6 @@ public class PantryEditingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pantry_editing, container, false);
+        return inflater.inflate(R.layout.fragment_add_ingredient, container, false);
     }
 }
