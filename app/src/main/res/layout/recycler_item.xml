@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    app:cardBackgroundColor="#6C96AE"
+    app:cardBackgroundColor="#009688"
     app:cardCornerRadius="24dp">
 
     <LinearLayout
@@ -21,7 +21,7 @@
             android:layout_margin="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#F8F5F5"
-            tools:text="sample text" />
+            tools:text="Pasta: penne" />
 
         <TextView
             android:id="@+id/ingredientQuantity_textView"
@@ -30,7 +30,7 @@
             android:layout_margin="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#F8F5F5"
-            tools:text="sample text" />
+            tools:text="16 oz" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/pantryFragment">
+
+    <fragment
+        android:id="@+id/pantryFragment"
+        android:name="com.tganesh.pantrypal.PantryFragment"
+        android:label="PantryPal"
+        tools:layout="@layout/fragment_pantry">
+        <action
+            android:id="@+id/action_pantryFragment_to_pantryEditingFragment"
+            app:destination="@id/pantryEditingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pantryEditingFragment"
+        android:name="com.tganesh.pantrypal.PantryEditingFragment"
+        android:label="Edit"
+        tools:layout="@layout/fragment_pantry_editing" />
+</navigation>

@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.tganesh.pantrypal.model.Ingredient;
 
 import java.util.ArrayList;
@@ -19,6 +22,7 @@ import java.util.List;
 
 public class PantryFragment extends Fragment {
 
+    private FloatingActionButton addFAB;
     private RecyclerView recyclerView;
     private IngredientAdapter adapter;
     private ArrayList<Ingredient> ingredientArrayList;
@@ -35,16 +39,24 @@ public class PantryFragment extends Fragment {
         return fragment;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pantry, container, false);
 
-        //implement recyclerView
+        //initialize UI
         recyclerView = view.findViewById(R.id.ingredient_RecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        addFAB = view.findViewById(R.id.add_FAB);
+        NavController navController = NavHostFragment.findNavController(this);
+        
+        addFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navController.navigate(R.id.action_pantryFragment_to_pantryEditingFragment);
+            }
+        });
 
         //add some test data to the list of ingredients
         ingredientArrayList = new ArrayList<Ingredient>();
