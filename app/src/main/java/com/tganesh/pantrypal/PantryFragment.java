@@ -1,22 +1,22 @@
 package com.tganesh.pantrypal;
 
+import android.database.Cursor;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.tganesh.pantrypal.data.DataBaseHelper;
 import com.tganesh.pantrypal.model.Ingredient;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +25,9 @@ public class PantryFragment extends Fragment {
     private FloatingActionButton addFAB;
     private RecyclerView recyclerView;
     private IngredientAdapter adapter;
-    private ArrayList<Ingredient> ingredientArrayList;
+    //private ArrayList<Ingredient> ingredientArrayList;
+    private DataBaseHelper DB;
+    private ArrayList<String> ingredient_id, ingredient_name, ingredient_quantity, ingredient_unit;
 
     public PantryFragment() {
         // Required empty public constructor
@@ -58,18 +60,40 @@ public class PantryFragment extends Fragment {
             }
         });
 
-        //add some test data to the list of ingredients
+        DB = new DataBaseHelper(getContext());
+        ingredient_id = new ArrayList<>();
+        ingredient_name = new ArrayList<>();
+        ingredient_quantity = new ArrayList<>();
+        ingredient_unit = new ArrayList<>();
+
+        storeDataInArrays();
+
+        /*//add some test data to the list of ingredients
         ingredientArrayList = new ArrayList<Ingredient>();
         Ingredient sampleIngredient1 = new Ingredient("Apples", 2, "");
         ingredientArrayList.add(sampleIngredient1);
         Ingredient sampleIngredient2 = new Ingredient("Pears", 3, "");
-        ingredientArrayList.add(sampleIngredient2);
+        ingredientArrayList.add(sampleIngredient2);*/
 
         //set up adapter and bind data from list of ingredients
-        adapter = new IngredientAdapter(ingredientArrayList);
+        //adapter = new IngredientAdapter(ingredientArrayList);
         recyclerView.setAdapter(adapter);
 
         return view;
+    }
+
+    void storeDataInArrays() {
+        Cursor cursor = DB.readAllData();
+        if (cursor.getCount() == 0) {
+            Toast.makeText(getContext(), "No data", Toast.LENGTH_SHORT).show();
+        } else {
+            while (cursor.moveToNext()) {
+                ingredient_id.add(cursor.getString(0));
+                ingredient_name.add(cursor.getString(1));
+                ingredient_quantity.add(cursor.getString(2));
+                ingredient_unit.add(cursor.getString(3));
+            }
+        }
     }
 
     //Set up Recycler viewHolder
@@ -88,7 +112,6 @@ public class PantryFragment extends Fragment {
             ingredientName_textView.setText(ingredient.getName());
             ingredientQuantity_textView.setText(Double.toString(ingredient.getQuantity()));
         }
-
     }
 
     //Set up Recycler adapter

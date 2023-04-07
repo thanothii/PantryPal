@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/name_input1_EditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -37,11 +37,11 @@
         android:layout_marginTop="28dp"
         android:text="Ingredient Quantity"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintStart_toStartOf="@+id/name_input1_EditText"
+        app:layout_constraintTop_toBottomOf="@+id/name_input1_EditText" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/quantity_input1_EditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -58,11 +58,11 @@
         android:layout_marginTop="28dp"
         android:text="Ingredient Unit"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName4"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
+        app:layout_constraintStart_toStartOf="@+id/quantity_input1_EditText"
+        app:layout_constraintTop_toBottomOf="@+id/quantity_input1_EditText" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/unit_spinner1"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -91,6 +91,6 @@
         app:layout_constraintEnd_toStartOf="@+id/add_Button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner2"
+        app:layout_constraintTop_toBottomOf="@+id/unit_spinner1"
         app:layout_constraintVertical_bias="0.283" />
 </androidx.constraintlayout.widget.ConstraintLayout>
