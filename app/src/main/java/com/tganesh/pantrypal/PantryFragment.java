@@ -67,7 +67,7 @@ public class PantryFragment extends Fragment {
         ingredient_unit = new ArrayList<>();
 
         storeDataInArrays();
-
+        adapter = new IngredientAdapter(ingredient_id, ingredient_name, ingredient_quantity, ingredient_unit);
         /*//add some test data to the list of ingredients
         ingredientArrayList = new ArrayList<Ingredient>();
         Ingredient sampleIngredient1 = new Ingredient("Apples", 2, "");
@@ -98,28 +98,28 @@ public class PantryFragment extends Fragment {
 
     //Set up Recycler viewHolder
     private static class IngredientViewHolder extends RecyclerView.ViewHolder {
-        private TextView ingredientName_textView;
-        private TextView ingredientQuantity_textView;
+        private TextView ingredientName_textView, ingredientQuantity_textView, ingredientUnit_textView;
 
         public IngredientViewHolder(View itemView) {
             super(itemView);
             ingredientName_textView = itemView.findViewById(R.id.ingredientName_textView);
             ingredientQuantity_textView = itemView.findViewById(R.id.ingredientQuantity_textView);
-
+            ingredientUnit_textView = itemView.findViewById(R.id.ingredientUnit_TextView);
         }
 
-        public void bindData(Ingredient ingredient) {
-            ingredientName_textView.setText(ingredient.getName());
-            ingredientQuantity_textView.setText(Double.toString(ingredient.getQuantity()));
-        }
+        public void bindData(Ingredient ingredient) { } //data binded in onBindViewHolder()
     }
 
     //Set up Recycler adapter
     private static class IngredientAdapter extends RecyclerView.Adapter<IngredientViewHolder> {
-        private ArrayList<Ingredient> ingredientArrayList;
+        private ArrayList<String> ingredient_id, ingredient_name, ingredient_quantity, ingredient_unit;
 
-        public IngredientAdapter(ArrayList<Ingredient> ingredientList) {
-            this.ingredientArrayList = ingredientList;
+        public IngredientAdapter(ArrayList<String> ingredient_id, ArrayList<String> ingredient_name,
+                                 ArrayList<String> ingredient_quantity, ArrayList<String> ingredient_unit) {
+            this.ingredient_id = ingredient_id;
+            this.ingredient_name = ingredient_name;
+            this.ingredient_quantity = ingredient_quantity;
+            this.ingredient_unit = ingredient_unit;
         }
 
         @NonNull
@@ -132,12 +132,15 @@ public class PantryFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull IngredientViewHolder holder, int position) {
-            holder.bindData(ingredientArrayList.get(position));
+            holder.ingredientName_textView.setText(String.valueOf(ingredient_name.get(position)));
+            holder.ingredientQuantity_textView.setText(String.valueOf(ingredient_quantity.get(position)));
+            holder.ingredientUnit_textView.setText(String.valueOf(ingredient_unit.get(position)));
+
         }
 
         @Override
         public int getItemCount() {
-            return ingredientArrayList.size();
+            return ingredient_id.size();
         }
 
     }
