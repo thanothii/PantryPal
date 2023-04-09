@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/pantryFragment">
+
+    <fragment
+        android:id="@+id/pantryFragment"
+        android:name="com.tganesh.pantrypal.PantryFragment"
+        android:label="PantryPal"
+        tools:layout="@layout/fragment_pantry">
+        <action
+            android:id="@+id/action_pantryFragment_to_addIngredientFragment"
+            app:destination="@id/addIngredientFragment" />
+        <action
+            android:id="@+id/action_pantryFragment_to_ingredientEditingFragment"
+            app:destination="@id/ingredientEditingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ingredientEditingFragment"
+        android:name="com.tganesh.pantrypal.IngredientEditingFragment"
+        android:label="Edit"
+        tools:layout="@layout/fragment_ingredient_editing" />
+    <fragment
+        android:id="@+id/addIngredientFragment"
+        android:name="com.tganesh.pantrypal.AddIngredientFragment"
+        android:label="Add"
+        tools:layout="@layout/fragment_add_ingredient" />
+</navigation>
